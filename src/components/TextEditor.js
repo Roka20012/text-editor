@@ -6,13 +6,11 @@ import { withHistory } from 'slate-history';
 import { makeStyles, Grid } from '@material-ui/core';
 
 import ActionsPanel from './ActionsPanel';
-import ResultWindow from './ResultWindow';
 
 const HOTKEYS = {
 	'mod+b': 'bold',
 	'mod+i': 'italic',
 	'mod+u': 'underline',
-	'mod+`': 'code',
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -28,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
 		padding: 20,
 		resize: 'none',
 		border: 'none',
+		lineHeight: 1,
 		borderRadius: 10,
 		outline: 'none',
 		boxShadow: '0px 0px 20px -10px black',
@@ -53,8 +52,13 @@ const TextEditor = ({
 	const editor = useMemo(() => withHistory(withReact(createEditor())), []);
 
 	const changeFormat = (format) => {
-		console.log('color', color);
 		toggleMark(editor, format);
+	};
+
+	const checkIsActive = (format) => {
+		// console.log('format', format);
+		// console.log('isActive', isMarkActive(editor, format));
+		return isMarkActive(editor, format);
 	};
 
 	return (
@@ -65,6 +69,7 @@ const TextEditor = ({
 					onChangeFontSize={setFontSize}
 					changeFormat={changeFormat}
 					onChangeColor={setColor}
+					checkIsActive={checkIsActive}
 					color={color}
 				/>
 			</Grid>

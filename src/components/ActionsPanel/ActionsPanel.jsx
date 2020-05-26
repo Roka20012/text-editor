@@ -80,6 +80,7 @@ const ActionsPanel = ({
 	fontSize = 16,
 	onChangeFontSize,
 	onChangeColor,
+	checkIsActive,
 	color,
 	...props
 }) => {
@@ -119,6 +120,7 @@ const ActionsPanel = ({
 				<Toolbar className={classes.tollbar}>
 					<IconButton
 						className={classes.actionButton}
+						style={{ backgroundColor: checkIsActive('bold') && '#888' }}
 						disableRipple
 						data-format='bold'
 						onClick={onChangeFormat}
@@ -127,6 +129,7 @@ const ActionsPanel = ({
 					</IconButton>
 					<IconButton
 						className={classes.actionButton}
+						style={{ backgroundColor: checkIsActive('underline') && '#888' }}
 						disableRipple
 						data-format='underline'
 						onClick={onChangeFormat}
@@ -135,6 +138,7 @@ const ActionsPanel = ({
 					</IconButton>
 					<IconButton
 						className={classes.actionButton}
+						style={{ backgroundColor: checkIsActive('italic') && '#888' }}
 						disableRipple
 						data-format='italic'
 						onClick={onChangeFormat}
@@ -183,7 +187,12 @@ const ActionsPanel = ({
 			</AppBar>
 			<Toolbar className={classes.tollbarAnchor} id='back-to-top-anchor' />
 			{isPickerOpen && (
-				<Twitter triangle='hide' onChange={onChangeColor} color={color} />
+				<Twitter
+					data-format='color'
+					triangle='hide'
+					onChange={onChangeColor}
+					color={color}
+				/>
 			)}
 			<ScrollTop {...props}>
 				<Fab color='secondary' size='medium' aria-label='scroll back to top'>

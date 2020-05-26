@@ -5,8 +5,6 @@ export const calculate = (value) => {
 		''
 	);
 
-	console.log('text', plainText.length);
-
 	const length = plainText.length;
 	return { characters: length, plainText };
 };
