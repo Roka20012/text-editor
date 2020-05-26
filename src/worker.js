@@ -5,6 +5,8 @@ export const calculate = (value) => {
 		''
 	);
 
+	const words = plainText.split(' ').filter((n) => n !== '').length;
+
 	const length = plainText.length;
-	return { characters: length, plainText };
+	return { characters: length, plainText, words };
 };

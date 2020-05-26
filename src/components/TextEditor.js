@@ -43,6 +43,7 @@ const TextEditor = ({
 	setValue,
 	characters,
 	plainText,
+	words,
 }) => {
 	const classes = useStyles();
 	const [fontSize, setFontSize] = useState(16);
@@ -94,7 +95,9 @@ const TextEditor = ({
 							}
 						}}
 					/>
-					<p className={classes.characters}>characters: {characters}</p>
+					<p className={classes.characters}>
+						characters: {characters} / words: {words}
+					</p>
 				</Slate>
 			</Grid>
 		</Grid>

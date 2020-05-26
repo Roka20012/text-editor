@@ -17,12 +17,14 @@ const App = () => {
 	const [characters, setCharacters] = useState(0);
 	const [value, setValue] = useState(initialValue);
 	const [plainText, setPlainText] = useState('');
+	const [words, setWords] = useState(0);
 
 	workerInstance.onmessage = ({ data }) => {
 		if (data?.result?.characters >= 0) {
-			const { characters, plainText } = data?.result;
+			const { characters, plainText, words } = data?.result;
 			setCharacters(characters);
 			setPlainText(plainText);
+			setWords(words);
 		}
 	};
 
@@ -36,6 +38,7 @@ const App = () => {
 			value={value}
 			plainText={plainText}
 			setValue={onChangeValue}
+			words={words}
 			characters={characters}
 		/>
 	);
